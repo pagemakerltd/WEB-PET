@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Web Pet",
+  "version": "7.0.0",
+  "description": "สัตว์เลี้ยงพิกเซล (แมว หมา พลูโต Happy) อยู่บนหน้าเว็บ เล่นด้วยกัน มีบ้านให้นอน จดโน้ต จำเว็บ และคุยกันได้",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "species.js",
+        "panel.js",
+        "content.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Web Pet",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "images/cat/icon.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/cat/*.png",
+        "images/dog/*.png",
+        "images/pluto/*.png",
+        "images/happy/*.png"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "icons": {
+    "128": "images/cat/icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://api.anthropic.com/*"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
